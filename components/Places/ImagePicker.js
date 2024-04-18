@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Colors } from "../../constants/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 
-function ImagePicker({onTakeImage}) {
+function ImagePicker({ onTakeImage }) {
   const [pickedImage, setPickedImage] = useState();
 
   const [cameraPermissionInformation, requestPermission] =
@@ -45,7 +45,7 @@ function ImagePicker({onTakeImage}) {
       aspect: [16, 9],
       quality: 0.5,
     });
-    console.log(image);
+
     setPickedImage(image.uri);
     onTakeImage(image.uri);
   }
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.primary100,
     borderRadius: 4,
+    overflow: "hidden",
   },
   image: {
     width: "100%",

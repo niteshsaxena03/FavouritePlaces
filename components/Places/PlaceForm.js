@@ -1,17 +1,18 @@
-import { ScrollView, Text, TextInput, View, StyleSheet } from "react-native";
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+
 import { Colors } from "../../constants/colors";
+import Button from "../UI/Button";
 import ImagePicker from "./ImagePicker";
 import LocationPicker from "./LocationPicker";
-import Button from "../UI/Button";
 
 function PlaceForm() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
   const [pickedLocation, setPickedLocation] = useState();
 
-  function changeTitleHandler(enteredTitle) {
-    setEnteredTitle(enteredTitle);
+  function changeTitleHandler(enteredText) {
+    setEnteredTitle(enteredText);
   }
 
   function takeImageHandler(imageUri) {
@@ -21,11 +22,13 @@ function PlaceForm() {
   const pickLocationHandler = useCallback((location) => {
     setPickedLocation(location);
   }, []);
+
   function savePlaceHandler() {
     console.log(enteredTitle);
-    console.log(pickedLocation);
     console.log(selectedImage);
+    console.log(pickedLocation);
   }
+
   return (
     <ScrollView style={styles.form}>
       <View>
@@ -42,6 +45,7 @@ function PlaceForm() {
     </ScrollView>
   );
 }
+
 export default PlaceForm;
 
 const styles = StyleSheet.create({
@@ -55,11 +59,11 @@ const styles = StyleSheet.create({
     color: Colors.primary500,
   },
   input: {
-    borderBottomColor: Colors.primary700,
     marginVertical: 8,
     paddingHorizontal: 4,
-    fontSize: 16,
     paddingVertical: 8,
+    fontSize: 16,
+    borderBottomColor: Colors.primary700,
     borderBottomWidth: 2,
     backgroundColor: Colors.primary100,
   },
